@@ -1,6 +1,4 @@
 
-#include <iostream>
-
 #include "towerOfHanoi.hpp"
 
 int main()
