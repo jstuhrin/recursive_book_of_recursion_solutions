@@ -3,6 +3,7 @@ NAME = tower
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++23
+LDFLAGS =
 
 SRCS = main.cpp towerOfHanoi.cpp
 
@@ -12,7 +13,7 @@ OBJS = $(SRCS:.cpp=.o)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CXX) $^ -o $@
+	$(CXX) $(LDFLAGS) $^ -o $@
 
 all: $(NAME)
 
@@ -24,4 +25,8 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+fsan: CXXFLAGS += -fsanitize=address,undefined -g3
+fsan: LDFLAGS += -fsanitize=address,undefined
+fsan: re
+
+.PHONY: all clean fclean re fsan
