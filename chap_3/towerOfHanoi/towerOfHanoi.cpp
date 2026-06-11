@@ -11,7 +11,7 @@ void TowerOfHanoi::solve(int n)
   printPegs();
   if (n < 1) return;
   std::cout << "Beginning to sort:\n\n";
-  solveRecursively(n, A_, C_, B_);
+  solveRecursively(n, A_, B_, C_);
   std::cout << "\nFinal state:\n\n";
   printPegs();
   checkResult();
@@ -32,7 +32,7 @@ void TowerOfHanoi::moveOneDisc(std::vector<int>& start, std::vector<int>& end)
   start.pop_back();
 }
 
-void TowerOfHanoi::solveRecursively(int n, std::vector<int>& start, std::vector<int>& end, std::vector<int>& temp)
+void TowerOfHanoi::solveRecursively(int n, std::vector<int>& start, std::vector<int>& temp, std::vector<int>& end)
 {
   if (n == 1)
   {
@@ -41,11 +41,11 @@ void TowerOfHanoi::solveRecursively(int n, std::vector<int>& start, std::vector<
     checkPeg(end);
     return;
   }
-  solveRecursively(n - 1, start, temp, end);
+  solveRecursively(n - 1, start, end, temp);
   moveOneDisc(start, end);
   printPegs();
   checkPeg(end);
-  solveRecursively(n - 1, temp, end, start);
+  solveRecursively(n - 1, temp, start, end);
 }
 
 void TowerOfHanoi::checkResult() const
