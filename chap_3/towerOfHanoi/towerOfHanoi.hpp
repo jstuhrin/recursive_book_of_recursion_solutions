@@ -8,8 +8,6 @@ class TowerOfHanoi
 {
   public:
     void solve(int n);
-    void checkResult() const;
-    void printPegs() const;
 
   private:
     void populate(int n);
@@ -18,6 +16,8 @@ class TowerOfHanoi
     void printPeg(const std::vector<int>& peg) const;
     void clear();
     void checkPeg(const std::vector<int>& peg) const;
+    void checkResult() const;
+    void printPegs() const;
 
     std::vector<int> A_, B_, C_;
 };
