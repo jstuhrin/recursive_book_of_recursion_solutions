@@ -12,6 +12,9 @@ void TowerOfHanoi::solve(int n)
   if (n < 1) return;
   std::cout << "Beginning to sort:\n\n";
   solveRecursively(n, A_, C_, B_);
+  std::cout << "\nFinal state:\n\n";
+  printPegs();
+  checkResult();
 }
 
 void TowerOfHanoi::populate(int n)
@@ -27,8 +30,6 @@ void TowerOfHanoi::moveOneDisc(std::vector<int>& start, std::vector<int>& end)
 {
   end.push_back(start.back());
   start.pop_back();
-  printPegs();
-  checkPeg(end);
 }
 
 void TowerOfHanoi::solveRecursively(int n, std::vector<int>& start, std::vector<int>& end, std::vector<int>& temp)
@@ -36,10 +37,14 @@ void TowerOfHanoi::solveRecursively(int n, std::vector<int>& start, std::vector<
   if (n == 1)
   {
     moveOneDisc(start, end);
+    printPegs();
+    checkPeg(end);
     return;
   }
   solveRecursively(n - 1, start, temp, end);
   moveOneDisc(start, end);
+  printPegs();
+  checkPeg(end);
   solveRecursively(n - 1, temp, end, start);
 }
 
@@ -47,18 +52,14 @@ void TowerOfHanoi::checkResult() const
 {
   assert(A_.size() == 0);
   assert(B_.size() == 0);
-  if (C_.size() == 0) return;
-  for (std::size_t i = 0; i < C_.size() - 1; ++i)
-  {
-    assert(C_[i] > C_[i + 1]);
-  }
+  checkPeg(C_);
 }
 
 void TowerOfHanoi::printPeg(const std::vector<int>& peg) const
 {
-  for (size_t i = 0; i < peg.size(); ++i)
+  for (const int disc : peg)
   {
-    std::cout << peg[i] << ' ';
+    std::cout << disc << ' ';
   }
   std::cout << "\n\n";
 }
@@ -82,8 +83,8 @@ void TowerOfHanoi::clear()
 
 void TowerOfHanoi::checkPeg(const std::vector<int>& peg) const
 {
-  for (std::size_t i = 0; i < peg.size() - 1; ++i)
+  for (std::size_t i = 1; i < peg.size(); ++i)
   {
-    assert(peg[i] > peg[i + 1]);
+    assert(peg[i - 1] > peg[i]);
   }
 }

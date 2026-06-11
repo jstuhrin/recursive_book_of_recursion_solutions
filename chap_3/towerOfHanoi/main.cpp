@@ -9,10 +9,5 @@ int main()
 
   towerOfHanoi.solve(16);
 
-  std::cout << "\nFinal state:\n\n";
-  towerOfHanoi.printPegs();
-
-  towerOfHanoi.checkResult();
-
   return 0;
 }
