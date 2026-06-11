@@ -9,6 +9,7 @@ void TowerOfHanoi::solve(int n)
   populate(n);
   std::cout << "Initial state:\n\n";
   printPegs();
+  if (n < 1) return;
   std::cout << "Beginning to sort:\n\n";
   solveRecursively(n, A_, C_, B_);
 }
@@ -46,6 +47,7 @@ void TowerOfHanoi::checkResult() const
 {
   assert(A_.size() == 0);
   assert(B_.size() == 0);
+  if (C_.size() == 0) return;
   for (std::size_t i = 0; i < C_.size() - 1; ++i)
   {
     assert(C_[i] > C_[i + 1]);

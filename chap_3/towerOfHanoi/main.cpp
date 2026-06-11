@@ -7,7 +7,7 @@ int main()
 {
   TowerOfHanoi towerOfHanoi;
 
-  towerOfHanoi.solve(6);
+  towerOfHanoi.solve(16);
 
   std::cout << "\nFinal state:\n\n";
   towerOfHanoi.printPegs();
