@@ -1,18 +1,18 @@
 
 #include <cassert>
-#include <iostream>
+#include <print>
 
 #include "towerOfHanoi.hpp"
 
 void TowerOfHanoi::solve(int n)
 {
   populate(n);
-  std::cout << "Initial state:\n\n";
+  std::print("Initial state:\n\n");
   printPegs();
   if (n < 1) return;
-  std::cout << "Beginning to sort:\n\n";
+  std::print("Beginning to sort:\n\n");
   solveRecursively(n, A_, B_, C_);
-  std::cout << "\nFinal state:\n\n";
+  std::print("\nFinal state:\n\n");
   printPegs();
   checkResult();
 }
@@ -59,19 +59,20 @@ void TowerOfHanoi::printPeg(const std::vector<int>& peg) const
 {
   for (const int disc : peg)
   {
-    std::cout << disc << ' ';
+    std::print("{} ", disc);
   }
-  std::cout << "\n\n";
+  std::print("\n");
 }
 
 void TowerOfHanoi::printPegs() const
 {
-  std::cout << "A: ";
+  std::print("A: ");
   printPeg(A_);
-  std::cout << "B: ";
+  std::print("B: ");
   printPeg(B_);
-  std::cout << "C: ";
+  std::print("C: ");
   printPeg(C_);
+  std::print("\n");
 }
 
 void TowerOfHanoi::clear()

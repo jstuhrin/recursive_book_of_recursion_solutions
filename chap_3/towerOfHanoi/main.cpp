@@ -5,7 +5,7 @@ int main()
 {
   TowerOfHanoi towerOfHanoi;
 
-  towerOfHanoi.solve(16);
+  towerOfHanoi.solve(11);
 
   return 0;
 }
