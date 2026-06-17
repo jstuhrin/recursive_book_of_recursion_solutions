@@ -41,7 +41,7 @@ int main(void)
         (char[]){"..#..........########.........#######"},
         (char[]){"..######............#.........#......"},
         (char[]){".......#..#####.....###########......"},
-        (char[]){".......####...#######................"}
+        (char[]){".......####...#######.........#......"}
   };
 
   struct Image img = {
@@ -59,11 +59,12 @@ int main(void)
     for (int x = 0; x < img.width; ++x)
     {
       if (img.image[y][x] == roomChar) ++count;
+      else continue;
       floodFill(&img, y, x, roomChar, count % 10 + '0');
     }
   }
 
-  assert(count == 11);
+  assert(count == 12);
 
   return 0;
 }
