@@ -62,12 +62,10 @@ int main(void)
       if (img.image[y][x] == roomChar)
       {
         int size = floodFillSize(&img, x, y, roomChar, 'o');
-        printf("size: %d\n", size);
         if (size > largestSize)
         {
           largestSize = size;
         }
-        printf("largestSize: %d\n", largestSize);
         printImg(&img);
       }
     }
